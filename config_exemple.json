@@ -1,0 +1,12 @@
+{
+  "twitter_consumer_key" : "",
+  "twitter_consumer_secret" : "",
+  "twitter_access_token_key" : "",
+  "twitter_access_token_secret" : "",
+  "discord_token" : "",
+  "max_ping" : 250,
+  "channel" : "",
+  "tweet_msg" : "",
+  "time_out_positive" : 600,
+  "time_out_negative" : 60
+}
