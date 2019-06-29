@@ -1,0 +1,12 @@
+{
+  "name": "pls_fix_your_servers",
+  "version": "1.0.0",
+  "description": "App to send tweets to Discord when my server is lagging",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "anUnhappyDiscordUser",
+  "license": "MIT"
+}
