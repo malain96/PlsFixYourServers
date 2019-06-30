@@ -1,6 +1,7 @@
 const Twitter = require('twitter');
 const Discord = require('discord.js');
 const config = require('./config');
+const Logs = require('./logs');
 
 const seconds = 1000;
 
@@ -20,20 +21,26 @@ let nextRun = config.time_out_negative * seconds;
 //Once the bot is ready
 discordClient.on('ready', () => {
     //Acknowledge the connection
-    console.log(`Logged in as ${discordClient.user.tag}!`);
+    Logs.writeLog(`Logged in as ${discordClient.user.tag}!`);
     //Retrieve the channel where messages will be posted
     const channel = discordClient.channels.find( chan => chan.name === config.channel);
     //Check the ping every X seconds
     setInterval(() => {
-        nextRun = config.time_out_negative * seconds;
         //Check the ping
         if(discordClient.ping >= config.max_ping){
             //Post a message in the channel and post a tweet
             channel.send('Sending a tweet to discord! Ping:' + discordClient.ping);
-            twitterClient.post('statuses/update', {status: config.tweet_msg},  function(error) {
-                if(error) throw error;
+            twitterClient.post('statuses/update', {status: new Date().toLocaleString() + ' - ' + config.tweet_msg},  function(error) {
+                if(error){
+                    Logs.writeLog(error.message);
+                    throw error;
+                }
             });
             nextRun = config.time_out_positive * seconds;
+            Logs.writeLog(`Ping is to high! Next execution in ` + config.time_out_positive + ' seconds.');
+        }else {
+            nextRun = config.time_out_negative * seconds;
+            Logs.writeLog(`Ping is OK! Next execution in ` + config.time_out_negative + ' seconds.');
         }
     }, nextRun);
 });

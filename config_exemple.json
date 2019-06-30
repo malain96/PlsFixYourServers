@@ -8,5 +8,6 @@
   "channel" : "",
   "tweet_msg" : "",
   "time_out_positive" : 600,
-  "time_out_negative" : 60
+  "time_out_negative" : 60,
+  "log_file" : "./log.logs"
 }
