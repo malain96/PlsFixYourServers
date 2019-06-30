@@ -20,6 +20,8 @@ working properly and I made this joke true.
 
 This Bot will check the ping of the server at a defined interval and send a tweet to Discord every time it's to high in 
 your opinion.
+
+/!\ This project's goal is not to spam Discord but to experiment with both Discord and Twitter development tools.
  
 ## Pre-requisites
 
